@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+﻿import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Terminal, ExternalLink, Star, Zap, BookOpen, ArrowRight, Download } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -18,7 +18,7 @@ function StarRating({ rating }: { rating: number }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className={`h-3.5 w-3.5 ${i < rating ? "fill-foreground/70 text-foreground/70" : "text-border"}`}
+          className={`h-3.5 w-3.5 ${i < rating ? "fill-foreground/85 text-foreground/85" : "text-border"}`}
         />
       ))}
     </div>
@@ -48,12 +48,12 @@ function SkillCard({ skill, index, onInstall }: { skill: Skill; index: number; o
       </div>
 
       {/* Description */}
-      <p className="text-sm text-foreground/70 leading-relaxed mb-3">{skill.description}</p>
+      <p className="text-sm text-foreground/85 leading-relaxed mb-3">{skill.description}</p>
 
       {/* Use case */}
       <div className="flex items-center gap-2 mb-4">
         <Zap className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-        <span className="text-sm text-foreground/60">{skill.useCase}</span>
+        <span className="text-sm text-foreground/80">{skill.useCase}</span>
       </div>
 
       {/* Tags */}
@@ -126,13 +126,13 @@ export default function Index() {
               <div className="h-9 w-9 rounded-xl border border-border shadow-soft flex items-center justify-center">
                 <Zap className="h-4 w-4 text-foreground" />
               </div>
-              <span className="text-sm font-mono text-muted-foreground tracking-widest uppercase">2026 · Skills Registry</span>
+              <span className="text-sm font-mono text-muted-foreground tracking-widest uppercase">2026 · Skills Yellow Page</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-display font-bold tracking-tight mb-4 text-foreground">
               AI Skills 目录
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              精选 Claude 系 & OpenClaw 生态最火、最实用的 Skills。搜索、浏览、一键安装。
+              精选 Claude 系与 OpenClaw 生态中最实用的 Skills。支持搜索、浏览与一键安装。
             </p>
           </motion.div>
         </div>
@@ -144,7 +144,7 @@ export default function Index() {
           <div className="relative mb-4">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
-              placeholder="搜索 Skills（名称、描述、标签）…"
+              placeholder="搜索 Skills（名称、描述、标签）..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="pl-12 h-12 bg-secondary border-border text-foreground font-mono text-base placeholder:text-muted-foreground focus-visible:ring-foreground/20 rounded-xl"
@@ -250,74 +250,68 @@ export default function Index() {
           </div>
 
           <div className="space-y-6">
-            {/* ClawHub */}
             <div className="border-b border-border pb-6">
               <div className="flex items-start justify-between mb-2">
-                <h3 className="font-semibold text-foreground text-base">1. ClawHub — OpenClaw 系最强技能商店</h3>
-                <a href="https://clawhub.ai" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">clawhub.ai →</a>
+                <h3 className="font-semibold text-foreground text-base">1. ClawHub - OpenClaw 生态技能商店</h3>
+                <a href="https://clawhub.ai" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">clawhub.ai</a>
               </div>
-              <p className="text-sm text-foreground/70 leading-relaxed mb-2">13,000+ 社区 Skills，支持搜索、分类浏览、下载量排行、安装命令一键复制。包含 agent-browser、self-improving-agent 等热门。</p>
-              <div className="bg-secondary rounded-lg px-4 py-2.5 font-mono text-xs text-foreground inline-block">npm i -g clawhub → clawhub search xxx</div>
-              <p className="text-xs text-muted-foreground mt-2">⚠️ 建议安装前先 review repo，虽已有 VirusTotal 扫描但仍需谨慎。</p>
+              <p className="text-sm text-foreground/85 leading-relaxed mb-2">收录大量社区技能，支持搜索、分类浏览与安装指引。</p>
+              <div className="bg-secondary rounded-lg px-4 py-2.5 font-mono text-xs text-foreground inline-block">npm i -g clawhub && clawhub search xxx</div>
             </div>
 
-            {/* skills.sh */}
             <div className="border-b border-border pb-6">
               <div className="flex items-start justify-between mb-2">
-                <h3 className="font-semibold text-foreground text-base">2. skills.sh — Vercel 跨 Agent Skills 目录</h3>
-                <a href="https://skills.sh" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">skills.sh →</a>
+                <h3 className="font-semibold text-foreground text-base">2. skills.sh - Agent Skills 目录</h3>
+                <a href="https://skills.sh" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">skills.sh</a>
               </div>
-              <p className="text-sm text-foreground/70 leading-relaxed mb-2">支持 Claude Code、Cursor、Gemini CLI 等多 Agent。有 Leaderboard（周下载量排行）、分类浏览，链接直达 GitHub repo。</p>
+              <p className="text-sm text-foreground/85 leading-relaxed mb-2">聚合多种 Agent 平台技能，并提供仓库跳转。</p>
               <div className="bg-secondary rounded-lg px-4 py-2.5 font-mono text-xs text-foreground inline-block">npx skills add owner/repo</div>
             </div>
 
-            {/* ComposioHQ */}
             <div className="border-b border-border pb-6">
               <div className="flex items-start justify-between mb-2">
-                <h3 className="font-semibold text-foreground text-base">3. awesome-claude-skills — 精选 Claude Skills 合集</h3>
-                <a href="https://github.com/ComposioHQ/awesome-claude-skills" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">GitHub →</a>
+                <h3 className="font-semibold text-foreground text-base">3. awesome-claude-skills</h3>
+                <a href="https://github.com/ComposioHQ/awesome-claude-skills" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">GitHub</a>
               </div>
-              <p className="text-sm text-foreground/70 leading-relaxed">手册式整理：官方 anthropics/skills + 社区精选 + 工具。质量高、无杂鱼，适合想"一次性获取靠谱列表"。所有链接都在 README 里，clone 即用。</p>
+              <p className="text-sm text-foreground/85 leading-relaxed">面向 Claude 的精选技能合集，适合快速发现高质量项目。</p>
             </div>
 
-            {/* VoltAgent */}
             <div className="border-b border-border pb-6">
               <div className="flex items-start justify-between mb-2">
-                <h3 className="font-semibold text-foreground text-base">4. awesome-openclaw-skills — OpenClaw 超大合集</h3>
-                <a href="https://github.com/VoltAgent/awesome-openclaw-skills" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">GitHub →</a>
+                <h3 className="font-semibold text-foreground text-base">4. awesome-openclaw-skills</h3>
+                <a href="https://github.com/VoltAgent/awesome-openclaw-skills" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">GitHub</a>
               </div>
-              <p className="text-sm text-foreground/70 leading-relaxed">5,400+ 个从 ClawHub 过滤/分类的 Skills。按类别整理（效率、编程、自动化等），相当于 ClawHub 的"精选镜像版"，避开低质/风险内容。</p>
+              <p className="text-sm text-foreground/85 leading-relaxed">面向 OpenClaw 的整理清单，覆盖常见任务场景。</p>
             </div>
 
-            {/* 其他 */}
             <div>
               <h3 className="font-semibold text-foreground text-base mb-3">5. 其他补充目录</h3>
               <div className="grid md:grid-cols-2 gap-3">
                 <a href="https://github.com/alirezarezvani/claude-skills" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-secondary rounded-xl px-4 py-3 hover:bg-secondary/80 transition-colors group">
                   <div>
                     <p className="text-sm font-medium text-foreground">alirezarezvani/claude-skills</p>
-                    <p className="text-xs text-muted-foreground">192+ Claude Code Skills + marketplace 插件</p>
+                    <p className="text-xs text-muted-foreground">社区维护的 Claude Skills 集合</p>
                   </div>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground shrink-0" />
                 </a>
                 <a href="https://mcpmarket.com/tools/skills/leaderboard" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-secondary rounded-xl px-4 py-3 hover:bg-secondary/80 transition-colors group">
                   <div>
                     <p className="text-sm font-medium text-foreground">MCP Market Leaderboard</p>
-                    <p className="text-xs text-muted-foreground">第三方排行榜，显示 Top Skills</p>
+                    <p className="text-xs text-muted-foreground">第三方技能热度榜单</p>
                   </div>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground shrink-0" />
                 </a>
                 <a href="https://oneskill.dev" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-secondary rounded-xl px-4 py-3 hover:bg-secondary/80 transition-colors group">
                   <div>
                     <p className="text-sm font-medium text-foreground">oneskill.dev</p>
-                    <p className="text-xs text-muted-foreground">Claude & Agent Skills 目录，浏览/下载/提交</p>
+                    <p className="text-xs text-muted-foreground">面向 Agent 技能的提交与浏览站点</p>
                   </div>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground shrink-0" />
                 </a>
                 <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-secondary rounded-xl px-4 py-3 hover:bg-secondary/80 transition-colors group">
                   <div>
                     <p className="text-sm font-medium text-foreground">Claude 官方 Skills 文档</p>
-                    <p className="text-xs text-muted-foreground">官方少量但稳定，含合作伙伴集成</p>
+                    <p className="text-xs text-muted-foreground">官方规范与开发指南</p>
                   </div>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground shrink-0" />
                 </a>
@@ -330,7 +324,7 @@ export default function Index() {
       {/* Footer */}
       <footer className="border-t border-border/60 py-8">
         <div className="max-w-6xl mx-auto px-6 text-center text-xs text-muted-foreground font-mono">
-          Skills Registry · 数据来源于社区公开资料 · 2026
+          Skills Yellow Page · 数据来源于社区公开资料 · 2026
         </div>
       </footer>
 
@@ -339,3 +333,5 @@ export default function Index() {
     </div>
   );
 }
+
+
