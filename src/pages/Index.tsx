@@ -1,16 +1,10 @@
 ﻿import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Terminal, ExternalLink, Star, Zap, BookOpen, ArrowRight, Download } from "lucide-react";
+import { Search, ExternalLink, Star, Zap, Download } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { skills, categories, type Ecosystem, type Category, type Skill } from "@/data/skills";
+import { skills, categories, type Category, type Skill } from "@/data/skills";
 import { InstallDialog } from "@/components/InstallDialog";
-
-const ecosystemLabels: Record<Ecosystem, { label: string; dotClass: string; badgeClass: string }> = {
-  claude: { label: "Claude", dotClass: "bg-claude", badgeClass: "bg-claude/10 text-claude border-claude/25" },
-  openclaw: { label: "OpenClaw", dotClass: "bg-openclaw", badgeClass: "bg-openclaw/10 text-openclaw border-openclaw/25" },
-};
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -26,7 +20,6 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 function SkillCard({ skill, index, onInstall }: { skill: Skill; index: number; onInstall: (s: Skill) => void }) {
-  const eco = ecosystemLabels[skill.ecosystem];
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -41,10 +34,6 @@ function SkillCard({ skill, index, onInstall }: { skill: Skill; index: number; o
           <span className="text-xl">{categories.find((c) => c.id === skill.category)?.icon}</span>
           <h3 className="font-mono font-semibold text-foreground text-base tracking-tight">{skill.name}</h3>
         </div>
-        <Badge variant="outline" className={`text-xs font-mono border ${eco.badgeClass}`}>
-          <span className={`inline-block h-1.5 w-1.5 rounded-full ${eco.dotClass} mr-1.5`} />
-          {eco.label}
-        </Badge>
       </div>
 
       {/* Description */}
@@ -93,7 +82,6 @@ function SkillCard({ skill, index, onInstall }: { skill: Skill; index: number; o
 
 export default function Index() {
   const [search, setSearch] = useState("");
-  const [selectedEco, setSelectedEco] = useState<Ecosystem | "all">("all");
   const [selectedCat, setSelectedCat] = useState<Category | "all">("all");
   const [installSkill, setInstallSkill] = useState<Skill | null>(null);
 
@@ -105,11 +93,10 @@ export default function Index() {
         s.name.toLowerCase().includes(q) ||
         s.description.toLowerCase().includes(q) ||
         s.tags.some((t) => t.toLowerCase().includes(q));
-      const matchEco = selectedEco === "all" || s.ecosystem === selectedEco;
       const matchCat = selectedCat === "all" || s.category === selectedCat;
-      return matchSearch && matchEco && matchCat;
+      return matchSearch && matchCat;
     });
-  }, [search, selectedEco, selectedCat]);
+  }, [search, selectedCat]);
 
   const activeCats = useMemo(() => {
     const used = new Set(filtered.map((s) => s.category));
@@ -149,28 +136,6 @@ export default function Index() {
               onChange={(e) => setSearch(e.target.value)}
               className="pl-12 h-12 bg-secondary border-border text-foreground font-mono text-base placeholder:text-muted-foreground focus-visible:ring-foreground/20 rounded-xl"
             />
-          </div>
-
-          {/* Ecosystem toggle */}
-          <div className="flex flex-wrap items-center gap-2 mb-3">
-            <span className="text-sm text-muted-foreground mr-1.5 font-medium">生态</span>
-            {(["all", "claude", "openclaw"] as const).map((eco) => (
-              <button
-                key={eco}
-                onClick={() => setSelectedEco(eco)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                  selectedEco === eco
-                    ? eco === "claude"
-                      ? "bg-claude/10 text-claude border border-claude/25"
-                      : eco === "openclaw"
-                      ? "bg-openclaw/10 text-openclaw border border-openclaw/25"
-                      : "bg-foreground text-background border border-foreground"
-                    : "bg-secondary text-muted-foreground hover:text-foreground border border-transparent"
-                }`}
-              >
-                {eco === "all" ? "全部" : eco === "claude" ? "Claude 系" : "OpenClaw 系"}
-              </button>
-            ))}
           </div>
 
           {/* Category filter */}
@@ -291,6 +256,13 @@ export default function Index() {
                   <div>
                     <p className="text-sm font-medium text-foreground">alirezarezvani/claude-skills</p>
                     <p className="text-xs text-muted-foreground">社区维护的 Claude Skills 集合</p>
+                  </div>
+                  <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground shrink-0" />
+                </a>
+                <a href="https://github.com/MiniMax-AI/skills" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-secondary rounded-xl px-4 py-3 hover:bg-secondary/80 transition-colors group">
+                  <div>
+                    <p className="text-sm font-medium text-foreground">MiniMax-AI/skills</p>
+                    <p className="text-xs text-muted-foreground">MiniMax 官方 AI Skills（前端/全栈/移动端/Shader）</p>
                   </div>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground shrink-0" />
                 </a>
