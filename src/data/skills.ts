@@ -1,4 +1,5 @@
 export type Category =
+  | "mine"
   | "meta"
   | "frontend"
   | "docs"
@@ -25,6 +26,7 @@ export interface Skill {
 }
 
 export const categories: { id: Category; label: string; icon: string }[] = [
+  { id: "mine", label: "My Skills", icon: "🛠️" },
   { id: "meta", label: "元技能", icon: "🧬" },
   { id: "frontend", label: "前端/UI", icon: "🎨" },
   { id: "docs", label: "文档处理", icon: "📄" },
@@ -40,6 +42,18 @@ export const categories: { id: Category; label: string; icon: string }[] = [
 ];
 
 export const skills: Skill[] = [
+  {
+    id: "invoice-generator",
+    name: "invoice-generator",
+    description:
+      "我自己的发票生成 Skill：基于 JSON 配置 + Python 脚本，生成专业 A4 PDF Invoice（支持增删项目、改客户信息、拆单重开）。",
+    useCase: "自由职业/小团队开票、重开发票、拆分账单",
+    rating: 5,
+    category: "mine",
+    url: "./skills/invoice-generator/SKILL.md",
+    installCmd: "本地目录：skills/invoice-generator",
+    tags: ["我的技能", "Invoice", "PDF", "Python"],
+  },
   {
     id: "skill-creator",
     name: "skill-creator",

@@ -1,0 +1,44 @@
+{
+  "invoice_number": "2026001",
+  "issue_date": "2026-03-19",
+  "due_date": "2026-04-19",
+  "seller_name_en": "Xi'an Qiaoshui Technology Co., Ltd.",
+  "seller_name_cn": "西安桥水科技有限公司",
+  "seller_location": "Xi'an, Shaanxi Province, China",
+  "seller_website": "aiheyi.taobao.com",
+  "seller_logo": "QS",
+  "logo_color": "#c0756a",
+  "client_name": "PinPon Inc.",
+  "client_location": "Japan",
+  "bank_name": "",
+  "account_holder": "西安桥水科技有限公司",
+  "account_number": "",
+  "swift_code": "",
+  "currency": "CNY",
+  "items": [
+    {
+      "name": "Ai-Interview-2026 — AI Interview System Development",
+      "description": "Core project (10k) + add-on feature (0.5k) · Delivered 2026-02-05",
+      "qty": 1,
+      "unit_price": 10500.00
+    },
+    {
+      "name": "Widget Consultation Context Injection",
+      "description": "New feature: widget consultation context injection · Delivered 2026-02-25",
+      "qty": 1,
+      "unit_price": 1000.00
+    },
+    {
+      "name": "New Requirements — March Sprint",
+      "description": "Additional feature requirements · Delivered 2026-03-04",
+      "qty": 1,
+      "unit_price": 1200.00
+    },
+    {
+      "name": "Widget Appointment + Text Chat",
+      "description": "New feature: widget appointment booking & text chat · Delivered 2026-03-19",
+      "qty": 1,
+      "unit_price": 1000.00
+    }
+  ]
+}
