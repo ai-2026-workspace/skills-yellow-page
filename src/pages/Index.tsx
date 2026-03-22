@@ -81,7 +81,7 @@ function SkillCard({ skill, index, onInstall }: { skill: Skill; index: number; o
 }
 
 export default function Index() {
-  const githubRepo = "hygkui/skills-yellow-page";
+  const githubRepo = "ai-2026-workspace/skills-yellow-page";
   const githubRepoUrl = `https://github.com/${githubRepo}`;
   const [repoStars, setRepoStars] = useState<string>("--");
   const [search, setSearch] = useState("");
@@ -354,4 +354,3 @@ export default function Index() {
     </div>
   );
 }
-
