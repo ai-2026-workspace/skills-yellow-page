@@ -1,4 +1,4 @@
-﻿import { useState, useMemo } from "react";
+﻿import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ExternalLink, Star, Zap, Download } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -81,9 +81,35 @@ function SkillCard({ skill, index, onInstall }: { skill: Skill; index: number; o
 }
 
 export default function Index() {
+  const githubRepo = "hygkui/skills-yellow-page";
+  const githubRepoUrl = `https://github.com/${githubRepo}`;
+  const [repoStars, setRepoStars] = useState<string>("--");
   const [search, setSearch] = useState("");
   const [selectedCat, setSelectedCat] = useState<Category | "all">("all");
   const [installSkill, setInstallSkill] = useState<Skill | null>(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function loadRepoStars() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${githubRepo}`, {
+          signal: controller.signal,
+        });
+        if (!res.ok) return;
+        const data = await res.json();
+        const stars = Number(data?.stargazers_count);
+        if (Number.isFinite(stars)) {
+          setRepoStars(stars.toLocaleString());
+        }
+      } catch {
+        // Ignore network/API failures and keep fallback "--".
+      }
+    }
+
+    void loadRepoStars();
+    return () => controller.abort();
+  }, [githubRepo]);
 
   const filtered = useMemo(() => {
     return skills.filter((s) => {
@@ -121,6 +147,21 @@ export default function Index() {
             <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
               精选 Claude 系与 OpenClaw 生态中最实用的 Skills。支持搜索、浏览与一键安装。
             </p>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <a
+                href={githubRepoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-sm font-mono text-foreground hover:bg-secondary transition-colors"
+              >
+                <ExternalLink className="h-3.5 w-3.5" />
+                GitHub: {githubRepo}
+              </a>
+              <span className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-card px-3 py-2 text-sm font-mono text-foreground/90">
+                <Star className="h-3.5 w-3.5 fill-foreground/85 text-foreground/85" />
+                {repoStars}
+              </span>
+            </div>
           </motion.div>
         </div>
       </header>
@@ -295,8 +336,16 @@ export default function Index() {
 
       {/* Footer */}
       <footer className="border-t border-border/60 py-8">
-        <div className="max-w-6xl mx-auto px-6 text-center text-xs text-muted-foreground font-mono">
-          Skills Yellow Page · 数据来源于社区公开资料 · 2026
+        <div className="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground font-mono">
+          <span>Skills Yellow Page · 数据来源于社区公开资料 · 2026</span>
+          <a
+            href="https://github.com/hygkui"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground underline-offset-4 hover:underline"
+          >
+            GitHub @hygkui
+          </a>
         </div>
       </footer>
 
@@ -305,5 +354,4 @@ export default function Index() {
     </div>
   );
 }
-
 
