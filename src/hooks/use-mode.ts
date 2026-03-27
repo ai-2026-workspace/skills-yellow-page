@@ -4,52 +4,40 @@ export type Mode = 'basic' | 'pro';
 
 const STORAGE_KEY = 'skills-yellow-page-mode';
 
-function getInitialMode(): Mode {
-  // SSR safety check
-  if (typeof window === 'undefined') {
+// Context for sharing mode across components
+const ModeContext = React.createContext<{
+  mode: Mode;
+  setMode: (mode: Mode) => void;
+}>({
+  mode: 'basic',
+  setMode: () => {},
+});
+
+export function ModeProvider({ children }: { children: React.ReactNode }) {
+  const [mode, setModeState] = React.useState<Mode>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored === 'basic' || stored === 'pro') {
+        return stored;
+      }
+    }
     return 'basic';
-  }
-
-  // 1. Check URL search params first
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlMode = urlParams.get('mode');
-  if (urlMode === 'basic' || urlMode === 'pro') {
-    return urlMode;
-  }
-
-  // 2. Check localStorage
-  const storedMode = localStorage.getItem(STORAGE_KEY);
-  if (storedMode === 'basic' || storedMode === 'pro') {
-    return storedMode;
-  }
-
-  // 3. Default to 'basic'
-  return 'basic';
-}
-
-export function useMode() {
-  const [mode, setModeState] = React.useState<Mode>(getInitialMode);
+  });
 
   const setMode = React.useCallback((newMode: Mode) => {
     setModeState(newMode);
-
-    // SSR safety check
-    if (typeof window === 'undefined') {
-      return;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(STORAGE_KEY, newMode);
     }
-
-    // Update localStorage
-    localStorage.setItem(STORAGE_KEY, newMode);
-
-    // Update URL via replaceState (no reload)
-    const url = new URL(window.location.href);
-    url.searchParams.set('mode', newMode);
-    window.history.replaceState({}, '', url.toString());
   }, []);
 
-  const toggleMode = React.useCallback(() => {
-    setMode(mode === 'basic' ? 'pro' : 'basic');
-  }, [mode, setMode]);
+  return React.createElement(
+    ModeContext.Provider,
+    { value: { mode, setMode } },
+    children
+  );
+}
 
-  return { mode, setMode, toggleMode };
+export function useMode() {
+  return React.useContext(ModeContext);
 }

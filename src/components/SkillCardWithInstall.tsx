@@ -2,24 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Star, Zap, Copy, Check, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { categories, type Skill } from "@/data/skills";
-
-type Platform = 'claude-code' | 'openai-codex' | 'openclaw' | 'cursor';
-
-interface SkillInstallCmd {
-  platform: Platform;
-  cmd: string;
-}
-
-const PLATFORM_LABELS: Record<Platform, string> = {
-  'claude-code': 'Claude Code',
-  'openai-codex': 'OpenAI Codex',
-  'openclaw': 'OpenClaw',
-  'cursor': 'Cursor',
-};
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -41,32 +25,24 @@ interface SkillCardWithInstallProps {
 }
 
 export function SkillCardWithInstall({ skill, index = 0, onInstall }: SkillCardWithInstallProps) {
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    skill.installCmds && skill.installCmds.length > 0 ? skill.installCmds[0].platform : null
-  );
-  const [copied, setCopied] = useState(false);
+  const [copiedCmd, setCopiedCmd] = useState<string | null>(null);
   const { toast } = useToast();
 
-  const installCmds: SkillInstallCmd[] = skill.installCmds || [];
-  const availablePlatforms = installCmds.map(cmd => cmd.platform);
+  // Get actual install commands from data
+  const installCmds = skill.installCmds || [];
   
-  const currentCmd = installCmds.find(cmd => cmd.platform === selectedPlatform)?.cmd || '';
+  // Only show commands that exist in the data
+  const npxCmd = installCmds.find(c => c.platform === 'claude-code')?.cmd;
+  const clawhubCmd = installCmds.find(c => c.platform === 'openclaw')?.cmd;
 
-  const handleCopy = async () => {
-    if (!currentCmd) return;
-    
+  const handleCopy = async (cmd: string) => {
     try {
-      await navigator.clipboard.writeText(currentCmd);
-      setCopied(true);
-      toast({
-        description: "已复制到剪贴板",
-      });
-      setTimeout(() => setCopied(false), 2000);
+      await navigator.clipboard.writeText(cmd);
+      setCopiedCmd(cmd);
+      setTimeout(() => setCopiedCmd(null), 2000);
+      toast({ description: "已复制到剪贴板" });
     } catch {
-      toast({
-        variant: "destructive",
-        description: "复制失败",
-      });
+      toast({ variant: "destructive", description: "复制失败" });
     }
   };
 
@@ -116,70 +92,64 @@ export function SkillCardWithInstall({ skill, index = 0, onInstall }: SkillCardW
       </div>
 
       {/* Install Section */}
-      {installCmds.length > 0 && (
-        <div className="border-t border-border bg-secondary/30 p-4">
-          {/* Platform Toggle */}
-          <RadioGroup
-            value={selectedPlatform || undefined}
-            onValueChange={(value) => setSelectedPlatform(value as Platform)}
-            className="flex flex-wrap gap-x-4 gap-y-2 mb-3"
-          >
-            {availablePlatforms.map((platform) => (
-              <div key={platform} className="flex items-center space-x-2">
-                <RadioGroupItem value={platform} id={`${skill.id}-${platform}`} />
-                <Label
-                  htmlFor={`${skill.id}-${platform}`}
-                  className="text-sm text-muted-foreground cursor-pointer hover:text-foreground transition-colors"
-                >
-                  {PLATFORM_LABELS[platform]}
-                </Label>
-              </div>
-            ))}
-          </RadioGroup>
-
-          {/* Command Display */}
+      <div className="border-t border-border bg-secondary/30 p-4 space-y-3">
+        {/* NPX Command - only show if exists */}
+        {npxCmd && (
           <div className="flex items-center gap-2">
-            <div className="flex-1 bg-secondary border border-border rounded-lg px-4 py-2.5 font-mono text-sm text-foreground overflow-x-auto">
-              {currentCmd || '暂无安装命令'}
+            <span className="text-xs text-muted-foreground w-16 shrink-0">Claude Code</span>
+            <div className="flex-1 bg-secondary border border-border rounded-lg px-3 py-2 font-mono text-xs text-foreground overflow-x-auto">
+              {npxCmd}
             </div>
             <Button
               size="icon"
               variant="outline"
-              onClick={handleCopy}
-              disabled={!currentCmd}
-              className="shrink-0 h-10 w-10 rounded-lg"
-              title="复制命令"
+              onClick={() => handleCopy(npxCmd)}
+              className="shrink-0 h-8 w-8 rounded-lg"
+              title="复制"
             >
-              {copied ? (
-                <Check className="h-4 w-4 text-green-500" />
-              ) : (
-                <Copy className="h-4 w-4" />
-              )}
+              {copiedCmd === npxCmd ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
             </Button>
           </div>
+        )}
 
-          {/* Install Button */}
-          <div className="flex justify-end mt-3">
+        {/* Clawhub Command - only show if exists */}
+        {clawhubCmd && (
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground w-16 shrink-0">OpenClaw</span>
+            <div className="flex-1 bg-secondary border border-border rounded-lg px-3 py-2 font-mono text-xs text-foreground overflow-x-auto">
+              {clawhubCmd}
+            </div>
             <Button
-              size="sm"
-              onClick={() => onInstall(skill)}
-              className="h-8 px-4 text-sm font-medium bg-foreground text-background hover:bg-foreground/80 shadow-none rounded-lg transition-all"
+              size="icon"
+              variant="outline"
+              onClick={() => handleCopy(clawhubCmd)}
+              className="shrink-0 h-8 w-8 rounded-lg"
+              title="复制"
             >
-              <Download className="h-3.5 w-3.5 mr-1.5" />
-              安装
+              {copiedCmd === clawhubCmd ? <Check className="h-3.5 w-3.5 text-green-500" /> : <Copy className="h-3.5 w-3.5" />}
             </Button>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* No install commands available */}
-      {installCmds.length === 0 && (
-        <div className="border-t border-border bg-secondary/30 p-4">
-          <p className="text-sm text-muted-foreground text-center">
-            暂无安装命令
+        {/* No install commands */}
+        {installCmds.length === 0 && (
+          <p className="text-sm text-muted-foreground text-center py-2">
+            暂无安装命令，请查看 GitHub 仓库
           </p>
+        )}
+
+        {/* Install Button */}
+        <div className="flex justify-end pt-2">
+          <Button
+            size="sm"
+            onClick={() => onInstall(skill)}
+            className="h-8 px-4 text-sm font-medium bg-foreground text-background hover:bg-foreground/80 shadow-none rounded-lg transition-all"
+          >
+            <Download className="h-3.5 w-3.5 mr-1.5" />
+            查看详情
+          </Button>
         </div>
-      )}
+      </div>
     </motion.div>
   );
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Switch } from "@/components/ui/switch";
-import { useMode, type Mode } from "@/hooks/use-mode";
+import { useMode } from "@/hooks/use-mode";
 import { cn } from "@/lib/utils";
 
 interface ModeToggleProps {
@@ -10,7 +10,9 @@ interface ModeToggleProps {
 export function ModeToggle({ className }: ModeToggleProps) {
   const { mode, setMode } = useMode();
 
-  const isPro = mode === "pro";
+  const handleToggle = (checked: boolean) => {
+    setMode(checked ? "pro" : "basic");
+  };
 
   return (
     <div
@@ -24,7 +26,7 @@ export function ModeToggle({ className }: ModeToggleProps) {
         onClick={() => setMode("basic")}
         className={cn(
           "text-sm font-medium transition-all duration-200",
-          !isPro
+          mode !== "pro"
             ? "text-foreground"
             : "text-muted-foreground hover:text-foreground/80"
         )}
@@ -33,8 +35,8 @@ export function ModeToggle({ className }: ModeToggleProps) {
       </button>
 
       <Switch
-        checked={isPro}
-        onCheckedChange={(checked) => setMode(checked ? "pro" : "basic")}
+        checked={mode === "pro"}
+        onCheckedChange={handleToggle}
         aria-label="切换模式"
         className="data-[state=checked]:bg-primary data-[state=unchecked]:bg-input"
       />
@@ -44,7 +46,7 @@ export function ModeToggle({ className }: ModeToggleProps) {
         onClick={() => setMode("pro")}
         className={cn(
           "text-sm font-medium transition-all duration-200",
-          isPro
+          mode === "pro"
             ? "text-foreground"
             : "text-muted-foreground hover:text-foreground/80"
         )}
