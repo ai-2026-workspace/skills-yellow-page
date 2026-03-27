@@ -21,6 +21,8 @@ export interface Skill {
   category: Category;
   url: string;
   installCmd?: string;
+  installCmds?: { platform: 'claude-code' | 'openai-codex' | 'openclaw' | 'cursor'; cmd: string }[];
+  entryPoints?: ('web' | 'app' | 'article')[];
   tags: string[];
 }
 
@@ -50,6 +52,7 @@ export const skills: Skill[] = [
     category: "meta",
     url: "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
     installCmd: "git clone → ~/.claude/skills/",
+    installCmds: [{ platform: 'claude-code', cmd: 'git clone https://github.com/anthropics/skills.git ~/.claude/skills/skill-creator' }],
     tags: ["官方", "入门必装", "meta"],
   },
   {
@@ -61,6 +64,7 @@ export const skills: Skill[] = [
     category: "meta",
     url: "https://github.com/vercel-labs/skills",
     installCmd: "npx skills add find-skills",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add find-skills' }],
     tags: ["Vercel", "CLI", "必装", "skills.sh"],
   },
   {
@@ -73,6 +77,8 @@ export const skills: Skill[] = [
     category: "frontend",
     url: "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
     installCmd: "npx skills add frontend-design",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add frontend-design' }],
+    entryPoints: ['web'],
     tags: ["React", "官方", "UI", "热门"],
   },
   {
@@ -85,6 +91,8 @@ export const skills: Skill[] = [
     category: "docs",
     url: "https://github.com/anthropics/skills/tree/main/skills",
     installCmd: "git clone → ~/.claude/skills/",
+    installCmds: [{ platform: 'claude-code', cmd: 'git clone https://github.com/anthropics/skills.git ~/.claude/skills/' }],
+    entryPoints: ['article'],
     tags: ["文档", "PDF", "Excel", "官方"],
   },
   {
@@ -96,6 +104,8 @@ export const skills: Skill[] = [
     category: "code-quality",
     url: "https://github.com/anthropics/skills",
     installCmd: "npx skills add commit-helper",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add commit-helper' }],
+    entryPoints: ['web'],
     tags: ["Git", "commit", "团队"],
   },
   {
@@ -108,6 +118,8 @@ export const skills: Skill[] = [
     category: "code-quality",
     url: "https://github.com/SpillwaveSolutions/pr-reviewer-skill",
     installCmd: "npx skills add pr-reviewer",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add pr-reviewer' }],
+    entryPoints: ['web'],
     tags: ["Code Review", "安全", "GitHub Actions"],
   },
   {
@@ -120,6 +132,7 @@ export const skills: Skill[] = [
     category: "automation",
     url: "https://github.com/openclaw/skills",
     installCmd: "clawhub install agent-browser",
+    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install agent-browser' }],
     tags: ["浏览器", "Playwright", "自动化", "热门"],
   },
   {
@@ -132,6 +145,7 @@ export const skills: Skill[] = [
     category: "agent",
     url: "https://github.com/VoltAgent/awesome-openclaw-skills",
     installCmd: "clawhub install self-improving-agent",
+    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install self-improving-agent' }],
     tags: ["Agent", "进化", "记忆"],
   },
   {
@@ -144,6 +158,7 @@ export const skills: Skill[] = [
     category: "agent",
     url: "https://clawhub.ai/autogame-17/capability-evolver",
     installCmd: "clawhub install capability-evolver",
+    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install capability-evolver' }],
     tags: ["Agent", "进化", "数字分身"],
   },
   {
@@ -156,6 +171,7 @@ export const skills: Skill[] = [
     category: "productivity",
     url: "https://clawhub.ai/steipete/gog",
     installCmd: "clawhub install gog",
+    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install gog' }],
     tags: ["Google", "Gmail", "Calendar", "119K+ downloads"],
   },
   {
@@ -168,6 +184,7 @@ export const skills: Skill[] = [
     category: "search",
     url: "https://clawhub.ai/arun-8687/tavily-search",
     installCmd: "clawhub install tavily-web-search",
+    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install tavily-web-search' }],
     tags: ["搜索", "AI", "75K+ downloads"],
   },
   {
@@ -180,6 +197,8 @@ export const skills: Skill[] = [
     category: "productivity",
     url: "https://clawhub.ai/steipete/summarize",
     installCmd: "clawhub install summarize",
+    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install summarize' }],
+    entryPoints: ['article'],
     tags: ["总结", "PDF", "YouTube", "174K+ downloads"],
   },
   {
@@ -191,6 +210,8 @@ export const skills: Skill[] = [
     category: "search",
     url: "https://clawhub.ai/oswalpalash/ontology",
     installCmd: "clawhub install ontology",
+    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install ontology' }],
+    entryPoints: ['article'],
     tags: ["知识图谱", "Obsidian", "114K+ downloads"],
   },
   {
@@ -203,6 +224,7 @@ export const skills: Skill[] = [
     category: "automation",
     url: "https://github.com/composiohq/awesome-claude-skills",
     installCmd: "npx skills add composio-connect",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add composio-connect' }],
     tags: ["集成", "1000+ 工具", "OAuth"],
   },
   {
@@ -325,5 +347,18 @@ export const skills: Skill[] = [
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/gif-sticker-maker",
     installCmd: "npx skills add minimax/gif-sticker-maker",
     tags: ["GIF", "MiniMax API", "盲盒风格", "动画贴纸"],
+  },
+  // Baoyu Skills
+  {
+    id: "baoyu-infographic",
+    name: "baoyu-infographic",
+    description:
+      "专业信息图生成器，支持 20 种布局（金字塔、时间线、韦恩图等）× 17 种视觉风格（手绘、赛博朋克、像素风等）。自动分析内容并推荐最佳组合。",
+    useCase: "知识卡片、信息图、可视化内容创作",
+    rating: 5,
+    category: "graphics",
+    url: "https://github.com/JimLiu/baoyu-skills",
+    installCmd: "npx skills add jimliu/baoyu-skills",
+    tags: ["信息图", "可视化", "11.8K+ stars", "Baoyu"],
   },
 ];

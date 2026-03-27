@@ -266,6 +266,13 @@ export default function Index() {
                   </div>
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground shrink-0" />
                 </a>
+                <a href="https://github.com/JimLiu/baoyu-skills" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-secondary rounded-xl px-4 py-3 hover:bg-secondary/80 transition-colors group">
+                  <div>
+                    <p className="text-sm font-medium text-foreground">JimLiu/baoyu-skills</p>
+                    <p className="text-xs text-muted-foreground">内容生成技能栈（信息图/幻灯片/漫画/封面图）</p>
+                  </div>
+                  <ExternalLink className="h-3.5 w-3.5 text-muted-foreground group-hover:text-foreground shrink-0" />
+                </a>
                 <a href="https://mcpmarket.com/tools/skills/leaderboard" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-secondary rounded-xl px-4 py-3 hover:bg-secondary/80 transition-colors group">
                   <div>
                     <p className="text-sm font-medium text-foreground">MCP Market Leaderboard</p>
