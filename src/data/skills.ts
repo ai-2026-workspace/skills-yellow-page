@@ -237,6 +237,8 @@ export const skills: Skill[] = [
     category: "design",
     url: "https://github.com/pbakaus/impeccable",
     installCmd: "npx skills add impeccable",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add impeccable' }],
+    entryPoints: ['web'],
     tags: ["UI", "10K+ stars", "impeccable.style"],
   },
   {
@@ -249,6 +251,8 @@ export const skills: Skill[] = [
     category: "design",
     url: "https://github.com/Leonxlnx/taste-skill",
     installCmd: "npx skills add taste-skill",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add taste-skill' }],
+    entryPoints: ['web'],
     tags: ["UI", "3.7K+ stars", "品味"],
   },
   {
@@ -286,6 +290,8 @@ export const skills: Skill[] = [
     category: "frontend",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/frontend-dev",
     installCmd: "npx skills add minimax/frontend-dev",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/frontend-dev' }],
+    entryPoints: ['web'],
     tags: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "GSAP", "MiniMax API", "生成艺术"],
   },
   {
@@ -298,6 +304,8 @@ export const skills: Skill[] = [
     category: "frontend",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/fullstack-dev",
     installCmd: "npx skills add minimax/fullstack-dev",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/fullstack-dev' }],
+    entryPoints: ['web'],
     tags: ["REST API", "JWT", "OAuth", "WebSocket", "SQL", "NoSQL"],
   },
   {
@@ -310,6 +318,8 @@ export const skills: Skill[] = [
     category: "mobile",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/android-native-dev",
     installCmd: "npx skills add minimax/android-native-dev",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/android-native-dev' }],
+    entryPoints: ['app'],
     tags: ["Kotlin", "Jetpack Compose", "Material Design 3", "Android", "WCAG"],
   },
   {
@@ -322,6 +332,8 @@ export const skills: Skill[] = [
     category: "mobile",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/ios-application-dev",
     installCmd: "npx skills add minimax/ios-application-dev",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/ios-application-dev' }],
+    entryPoints: ['app'],
     tags: ["SwiftUI", "UIKit", "SnapKit", "Apple HIG", "Dynamic Type"],
   },
   {
@@ -334,6 +346,7 @@ export const skills: Skill[] = [
     category: "graphics",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev",
     installCmd: "npx skills add minimax/shader-dev",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/shader-dev' }],
     tags: ["GLSL", "ShaderToy", "SDF", "光线行进", "程序化生成"],
   },
   {
@@ -346,6 +359,7 @@ export const skills: Skill[] = [
     category: "graphics",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/gif-sticker-maker",
     installCmd: "npx skills add minimax/gif-sticker-maker",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/gif-sticker-maker' }],
     tags: ["GIF", "MiniMax API", "盲盒风格", "动画贴纸"],
   },
   // Baoyu Skills
@@ -359,6 +373,7 @@ export const skills: Skill[] = [
     category: "graphics",
     url: "https://github.com/JimLiu/baoyu-skills",
     installCmd: "npx skills add jimliu/baoyu-skills",
+    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add jimliu/baoyu-skills' }],
     tags: ["信息图", "可视化", "11.8K+ stars", "Baoyu"],
   },
 ];
