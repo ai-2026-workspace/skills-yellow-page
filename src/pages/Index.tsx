@@ -77,8 +77,16 @@ export default function Index() {
               <p className="text-sm text-foreground/85 leading-relaxed">面向 OpenClaw 的整理清单，覆盖常见任务场景。</p>
             </div>
 
+            <div className="border-b border-border pb-6">
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="font-semibold text-foreground text-base">5. SkillHub 腾讯云 - AI Skills 精选推荐</h3>
+                <a href="https://skillhub.tencent.com/" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground font-mono underline-offset-4 hover:underline shrink-0">skillhub.tencent.com</a>
+              </div>
+              <p className="text-sm text-foreground/85 leading-relaxed">精选推荐，高速下载体验，轻松查找 ClawHub 2.5 万个 AI Skills。</p>
+            </div>
+
             <div>
-              <h3 className="font-semibold text-foreground text-base mb-3">5. 其他补充目录</h3>
+              <h3 className="font-semibold text-foreground text-base mb-3">6. 其他补充目录</h3>
               <div className="grid md:grid-cols-2 gap-3">
                 <a href="https://github.com/alirezarezvani/claude-skills" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-secondary rounded-xl px-4 py-3 hover:bg-secondary/80 transition-colors group">
                   <div>

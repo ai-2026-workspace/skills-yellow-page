@@ -51,8 +51,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "meta",
     url: "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
-    installCmd: "git clone → ~/.claude/skills/",
-    installCmds: [{ platform: 'claude-code', cmd: 'git clone https://github.com/anthropics/skills.git ~/.claude/skills/skill-creator' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'git clone https://github.com/anthropics/skills.git ~/.claude/skills/skill-creator' },
+      { platform: 'openai-codex', cmd: 'git clone https://github.com/anthropics/skills.git ~/.codex/skills/skill-creator' }
+    ],
     tags: ["官方", "入门必装", "meta"],
   },
   {
@@ -63,8 +65,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "meta",
     url: "https://github.com/vercel-labs/skills",
-    installCmd: "npx skills add find-skills",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add find-skills' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add find-skills' },
+      { platform: 'openai-codex', cmd: 'npx skills add find-skills' }
+    ],
     tags: ["Vercel", "CLI", "必装", "skills.sh"],
   },
   {
@@ -76,8 +80,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "frontend",
     url: "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
-    installCmd: "npx skills add frontend-design",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add frontend-design' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add frontend-design' },
+      { platform: 'openai-codex', cmd: 'npx skills add frontend-design' }
+    ],
     entryPoints: ['web'],
     tags: ["React", "官方", "UI", "热门"],
   },
@@ -90,8 +96,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "docs",
     url: "https://github.com/anthropics/skills/tree/main/skills",
-    installCmd: "git clone → ~/.claude/skills/",
-    installCmds: [{ platform: 'claude-code', cmd: 'git clone https://github.com/anthropics/skills.git ~/.claude/skills/' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'git clone https://github.com/anthropics/skills.git ~/.claude/skills/' },
+      { platform: 'openai-codex', cmd: 'git clone https://github.com/anthropics/skills.git ~/.codex/skills/' }
+    ],
     entryPoints: ['article'],
     tags: ["文档", "PDF", "Excel", "官方"],
   },
@@ -103,8 +111,10 @@ export const skills: Skill[] = [
     rating: 4,
     category: "code-quality",
     url: "https://github.com/anthropics/skills",
-    installCmd: "npx skills add commit-helper",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add commit-helper' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add commit-helper' },
+      { platform: 'openai-codex', cmd: 'npx skills add commit-helper' }
+    ],
     entryPoints: ['web'],
     tags: ["Git", "commit", "团队"],
   },
@@ -117,8 +127,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "code-quality",
     url: "https://github.com/SpillwaveSolutions/pr-reviewer-skill",
-    installCmd: "npx skills add pr-reviewer",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add pr-reviewer' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add pr-reviewer' },
+      { platform: 'openai-codex', cmd: 'npx skills add pr-reviewer' }
+    ],
     entryPoints: ['web'],
     tags: ["Code Review", "安全", "GitHub Actions"],
   },
@@ -131,8 +143,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "automation",
     url: "https://github.com/openclaw/skills",
-    installCmd: "clawhub install agent-browser",
-    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install agent-browser' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add agent-browser' },
+      { platform: 'openai-codex', cmd: 'npx skills add agent-browser' }
+    ],
     tags: ["浏览器", "Playwright", "自动化", "热门"],
   },
   {
@@ -144,8 +158,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "agent",
     url: "https://github.com/VoltAgent/awesome-openclaw-skills",
-    installCmd: "clawhub install self-improving-agent",
-    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install self-improving-agent' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add self-improving-agent' },
+      { platform: 'openai-codex', cmd: 'npx skills add self-improving-agent' }
+    ],
     tags: ["Agent", "进化", "记忆"],
   },
   {
@@ -157,8 +173,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "agent",
     url: "https://clawhub.ai/autogame-17/capability-evolver",
-    installCmd: "clawhub install capability-evolver",
-    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install capability-evolver' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add capability-evolver' },
+      { platform: 'openai-codex', cmd: 'npx skills add capability-evolver' }
+    ],
     tags: ["Agent", "进化", "数字分身"],
   },
   {
@@ -170,8 +188,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "productivity",
     url: "https://clawhub.ai/steipete/gog",
-    installCmd: "clawhub install gog",
-    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install gog' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add gog' },
+      { platform: 'openai-codex', cmd: 'npx skills add gog' }
+    ],
     tags: ["Google", "Gmail", "Calendar", "119K+ downloads"],
   },
   {
@@ -183,8 +203,10 @@ export const skills: Skill[] = [
     rating: 4,
     category: "search",
     url: "https://clawhub.ai/arun-8687/tavily-search",
-    installCmd: "clawhub install tavily-web-search",
-    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install tavily-web-search' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add tavily-search' },
+      { platform: 'openai-codex', cmd: 'npx skills add tavily-search' }
+    ],
     tags: ["搜索", "AI", "75K+ downloads"],
   },
   {
@@ -196,8 +218,10 @@ export const skills: Skill[] = [
     rating: 4,
     category: "productivity",
     url: "https://clawhub.ai/steipete/summarize",
-    installCmd: "clawhub install summarize",
-    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install summarize' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add summarize' },
+      { platform: 'openai-codex', cmd: 'npx skills add summarize' }
+    ],
     entryPoints: ['article'],
     tags: ["总结", "PDF", "YouTube", "174K+ downloads"],
   },
@@ -209,8 +233,10 @@ export const skills: Skill[] = [
     rating: 4,
     category: "search",
     url: "https://clawhub.ai/oswalpalash/ontology",
-    installCmd: "clawhub install ontology",
-    installCmds: [{ platform: 'openclaw', cmd: 'clawhub install ontology' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add ontology' },
+      { platform: 'openai-codex', cmd: 'npx skills add ontology' }
+    ],
     entryPoints: ['article'],
     tags: ["知识图谱", "Obsidian", "114K+ downloads"],
   },
@@ -223,8 +249,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "automation",
     url: "https://github.com/composiohq/awesome-claude-skills",
-    installCmd: "npx skills add composio-connect",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add composio-connect' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add composio-connect' },
+      { platform: 'openai-codex', cmd: 'npx skills add composio-connect' }
+    ],
     tags: ["集成", "1000+ 工具", "OAuth"],
   },
   {
@@ -236,8 +264,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "design",
     url: "https://github.com/pbakaus/impeccable",
-    installCmd: "npx skills add impeccable",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add impeccable' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add impeccable' },
+      { platform: 'openai-codex', cmd: 'npx skills add impeccable' }
+    ],
     entryPoints: ['web'],
     tags: ["UI", "10K+ stars", "impeccable.style"],
   },
@@ -250,8 +280,10 @@ export const skills: Skill[] = [
     rating: 4,
     category: "design",
     url: "https://github.com/Leonxlnx/taste-skill",
-    installCmd: "npx skills add taste-skill",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add taste-skill' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add taste-skill' },
+      { platform: 'openai-codex', cmd: 'npx skills add taste-skill' }
+    ],
     entryPoints: ['web'],
     tags: ["UI", "3.7K+ stars", "品味"],
   },
@@ -264,7 +296,6 @@ export const skills: Skill[] = [
     rating: 5,
     category: "meta",
     url: "https://github.com/travisvn/awesome-claude-skills",
-    installCmd: "",
     tags: ["合集", "9K+ stars", "awesome-list"],
   },
   {
@@ -276,7 +307,6 @@ export const skills: Skill[] = [
     rating: 5,
     category: "meta",
     url: "https://github.com/VoltAgent/awesome-openclaw-skills",
-    installCmd: "",
     tags: ["合集", "39K+ stars", "awesome-list"],
   },
   // MiniMax Skills
@@ -289,8 +319,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "frontend",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/frontend-dev",
-    installCmd: "npx skills add minimax/frontend-dev",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/frontend-dev' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add minimax/frontend-dev' },
+      { platform: 'openai-codex', cmd: 'npx skills add minimax/frontend-dev' }
+    ],
     entryPoints: ['web'],
     tags: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "GSAP", "MiniMax API", "生成艺术"],
   },
@@ -303,8 +335,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "frontend",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/fullstack-dev",
-    installCmd: "npx skills add minimax/fullstack-dev",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/fullstack-dev' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add minimax/fullstack-dev' },
+      { platform: 'openai-codex', cmd: 'npx skills add minimax/fullstack-dev' }
+    ],
     entryPoints: ['web'],
     tags: ["REST API", "JWT", "OAuth", "WebSocket", "SQL", "NoSQL"],
   },
@@ -317,8 +351,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "mobile",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/android-native-dev",
-    installCmd: "npx skills add minimax/android-native-dev",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/android-native-dev' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add minimax/android-native-dev' },
+      { platform: 'openai-codex', cmd: 'npx skills add minimax/android-native-dev' }
+    ],
     entryPoints: ['app'],
     tags: ["Kotlin", "Jetpack Compose", "Material Design 3", "Android", "WCAG"],
   },
@@ -331,8 +367,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "mobile",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/ios-application-dev",
-    installCmd: "npx skills add minimax/ios-application-dev",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/ios-application-dev' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add minimax/ios-application-dev' },
+      { platform: 'openai-codex', cmd: 'npx skills add minimax/ios-application-dev' }
+    ],
     entryPoints: ['app'],
     tags: ["SwiftUI", "UIKit", "SnapKit", "Apple HIG", "Dynamic Type"],
   },
@@ -345,8 +383,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "graphics",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/shader-dev",
-    installCmd: "npx skills add minimax/shader-dev",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/shader-dev' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add minimax/shader-dev' },
+      { platform: 'openai-codex', cmd: 'npx skills add minimax/shader-dev' }
+    ],
     tags: ["GLSL", "ShaderToy", "SDF", "光线行进", "程序化生成"],
   },
   {
@@ -358,8 +398,10 @@ export const skills: Skill[] = [
     rating: 5,
     category: "graphics",
     url: "https://github.com/MiniMax-AI/skills/tree/main/skills/gif-sticker-maker",
-    installCmd: "npx skills add minimax/gif-sticker-maker",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add minimax/gif-sticker-maker' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add minimax/gif-sticker-maker' },
+      { platform: 'openai-codex', cmd: 'npx skills add minimax/gif-sticker-maker' }
+    ],
     tags: ["GIF", "MiniMax API", "盲盒风格", "动画贴纸"],
   },
   // Baoyu Skills
@@ -372,8 +414,27 @@ export const skills: Skill[] = [
     rating: 5,
     category: "graphics",
     url: "https://github.com/JimLiu/baoyu-skills",
-    installCmd: "npx skills add jimliu/baoyu-skills",
-    installCmds: [{ platform: 'claude-code', cmd: 'npx skills add jimliu/baoyu-skills' }],
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add jimliu/baoyu-skills' },
+      { platform: 'openai-codex', cmd: 'npx skills add jimliu/baoyu-skills' }
+    ],
     tags: ["信息图", "可视化", "11.8K+ stars", "Baoyu"],
+  },
+  // SlowMist Security
+  {
+    id: "slowmist-agent-security",
+    name: "slowmist-agent-security",
+    description:
+      "慢雾科技出品的 Agent 安全技能，涵盖智能合约安全审计、Web3 安全最佳实践、漏洞检测与防护。帮助 Agent 识别和规避常见安全风险。",
+    useCase: "智能合约审计、Web3 安全、漏洞防护",
+    rating: 5,
+    category: "code-quality",
+    url: "https://github.com/slowmist/slowmist-agent-security",
+    installCmd: "clawhub install slowmist-agent-security",
+    installCmds: [
+      { platform: 'claude-code', cmd: 'npx skills add slowmist/slowmist-agent-security' },
+      { platform: 'openclaw', cmd: 'clawhub install slowmist-agent-security' }
+    ],
+    tags: ["安全", "审计", "智能合约", "Web3", "SlowMist"],
   },
 ];
